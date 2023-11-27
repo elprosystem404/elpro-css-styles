@@ -1,1 +1,2 @@
-export { default as stringManipulation} from './string.manipulation';
+import stringManipulation from './string.manipulation';
+export { stringManipulation };

@@ -1,6 +1,6 @@
 {
     "name": "elpro-css-styles",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "",
     "main": "dist/cjs/index.js",
     "module": "dist/esm/index.js",
@@ -9,7 +9,17 @@
     ],
     "types": "dist/index.d.ts",
     "exports": {
-        "./package.json": "./package.json"
+        "./package.json": "./package.json",
+        "./*": {
+            "import": "./dist/esm/*.js",
+            "require": "./dist/cjs/*.js",
+            "node": "./src/*.ts"
+        },
+        "./dist/*": {
+            "import": "./dist/esm/*",
+            "require": "./dist/cjs/*"
+        },
+        "./src/*": "./src/*.ts"
     },
     "scripts": {
         "build": "rollup -c --bundleConfigAsCjs"
