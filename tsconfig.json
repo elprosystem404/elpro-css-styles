@@ -1,21 +1,26 @@
 {
-    "compilerOptions": {
-  
-      "target": "es2016",
-      "esModuleInterop": true,   
-      "forceConsistentCasingInFileNames": true,
-      "strict": true,
-      "skipLibCheck": true,
-  
-      "jsx": "react",
-      "module": "ESNext",
-      "declaration": true,
-      "declarationDir": "types",
-      "sourceMap": true,
-      "outDir": "dist",
-      "moduleResolution": "node",
-      "allowSyntheticDefaultImports": true,
-      "emitDeclarationOnly": true,
-      "rootDir": "src"
-    }
-  }
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "jsx": "react",
+    "module": "ESNext",
+    "sourceMap": true,
+    "outDir": "dist",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true
+    
+    // "target": "es2016",
+    // "rootDir": "src",
+    // "declaration": true,
+    // "declarationDir": "types",
+    //  "emitDeclarationOnly": true,
+  },
+  "exclude": [
+    "dist",
+    "node_modules",
+    "src/**/*.test.tsx",
+    "src/**/*.stories.tsx"
+  ]
+}

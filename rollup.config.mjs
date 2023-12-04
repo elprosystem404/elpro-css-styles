@@ -1,31 +1,33 @@
-import resolve from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
-import typescript from '@rollup/plugin-typescript';
-import { dts } from 'rollup-plugin-dts';
-const pkg = require('./package.json');
+/*--- https://blog.logrocket.com/how-to-build-component-library-react-typescript/
 
-export default [{
-        input: 'src/index.ts',
-        output: [{
-                file: pkg.main,
-                format: 'cjs',
-                sourceMap: true,
-            },
-            {
-                file: pkg.module,
-                format: 'esm',
-                sourceMap: true,
-            },
-        ],
-        plugins: [
-            resolve(),
-            commonjs(),
-            typescript({ tsconfig: './tsconfig.json' }),
-        ],
-    },
-    {
-        input: 'dist/esm/types/index.d.ts',
-        output: [{ file: 'dist/index.d.ts', format: 'esm' }],
-        plugins: [dts()],
-    },
-];
+https://github.com/GovTechSG/sgds-govtech-react/blob/v2/rollup.config.js
+
+ */
+
+import { PATH } from './config/path.config';
+import {
+    createConfig,
+    getFolders,
+    safePackageName,
+} from './config/rollup.config';
+
+const packageJson = require(PATH.packagejson);
+
+//--- folders including root access point
+// const folders = ['', ...getFolders(pathSrc)];
+
+const folders = getFolders(PATH.src);
+
+const config = folders
+    .map((folder) =>
+        createConfig(
+            packageJson,
+            folder ? `${folder}/` : '',
+            'index.ts'
+        )
+    )
+    .flat();
+
+//
+
+export default config;
